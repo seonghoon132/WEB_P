@@ -1,105 +1,95 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
   <head>
+    <base href="http://127.0.0.1:5500">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>메이플 메인화면</title>
+    <title>메이플스토리</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="js/basic_js_test.js"></script>
-    <script type="text/javascript" src="js/search.js" defer></script>
+    <style>
+      table {
+      font-size: 20pt;
+      color: white;
+      }
+      </style>
   </head>
   <body style="background-color: black;">
-    <!-- <div style="display: flex; justify-content: center; ">
+     <!-- <div style="display: flex; justify-content: center;">
     <img src="image/lnb_logo.png" width="200" height="60">
-    <h3 style="font-size: 24px; font-weight: bold; font-style: italic; color: white;">게임정보 게임소식 직업정보 커뮤니티 고객지원</h3>
+    <h3 style="font-size: 24px; font-weight: bold; font-style: italic; color: white;"><a href=" 
+      https://www.leagueoflegends.com/ko-kr/how-to-play/" target="_blank" >게임정보 </a>직업정보 새소식 패치노트 고객지원</h3>
     </div> -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark border-bottom border-body" data-bs-theme="dark" >
+    <nav class="navbar navbar-expand-lg bg-body-tertiary navbar bg-dark border-bottom border-body" data-bs-theme= "dark">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-        <img src="image/lnb_logo.png" alt="Logo" width="100" height="40" class="d-inline-block align-text-top">
-        </a>
+        <a class="navbar-brand" href="#"><img src="image/lnb_logo.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+          maplestory</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="https://maplestory.nexon.com/Home/Main" target="_blank">게임정보</a>
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">직업정보</a>
+              <a class="nav-link" href="#">Link</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">패치노트</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">게임다운로드</a>
-            </li>
-            
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                커뮤니티
+                Dropdown
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">게시판</a></li>
-                <li><a class="dropdown-item" href="#">메플 극장</a></li>
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">문의사항</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
               </ul>
             </li>
             <li class="nav-item">
               <a class="nav-link disabled" aria-disabled="true">Disabled</a>
             </li>
           </ul>
-          <nav class="navbar bg-body-tertiary">
-            <div class="container-fluid">
-              <a class="navbar-brand">게임정보</a>
           <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="키워드입력" aria-label="Search">
-            <button class="btn btn-outline-success"id="search_btn" type="submit">검색하기</button>
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
           </form>
         </div>
       </div>
     </nav>
     <hr>
     <div style="display: flex; justify-content: center;">
-      <img src="image/OIP.jpg" width="1200" height="768" class="img-fluid">
+      
+      <a href="index.html" target="_blank"><img src="image/OIP.jpg" width="1400" height="600"></a>
     </div>
-    <hr>
     <div style="display: flex; justify-content: center;">
-      <h3 style="font-size: 24px; font-weight: bold; font-style: italic; color: white; font-family: 굴림;">라이엇 게임회사 4월 12일 제작과정 </h3>
+      <h3 style="font-size: 22px; font-style: italic; color: white;">미디어소프트웨어학과 제작됨</h3>
     </div>
-
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">First</th>
-          <th scope="col">Last</th>
-          <th scope="col">Handle</th>
-        </tr>
-      </thead>
+    <div style="display: flex; justify-content: center;">
+      <table border="1">
+      <caption>인기직업</caption>
       <tbody>
-        <tr style="color: wheat;">
-          <th scope="row">1</th>
-          <td>바이</td>
-          <td>사이온</td>
-          <td>아리</td>
+      <tr bgcolor="red">
+      <td >전사</td>
+      <td>마법사</td>
+      <td>기사</td>
+      <td>성기사</td>
+      <td>흑기사</td>
+      </tr>
+      <tr bgcolor="grey">
+       <td colspan="5"><a href="https://superverymore.tv/skzoo-chk-chk-boom" target="_blank"> 홈페이지이동</a></td>
         </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>베이가</td>
-          <td>가렌</td>
-          <td>다리리</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>브론즈</td>
-          <td>실버</td>
-          <td>골드</td>
-        </tr>
+      <tr>
+      <td bgcolor="green">대도</td>
+      <td>도적</td>
+      <td>암살자</td>
+      <td colspan="2"><a href="https://superverymore.tv/skzoo-chk-chk-boom" target="_blank"><img src="image/ruminus.jpg" width="80" height="60"></a><font size="13">의적 도둑</font></td>
+    </tr>
       </tbody>
-    </table>
+      </table>
+      </div>
+      <hr>
+      <div style="display: flex; justify-content: center;">
+        <h3 style="color: white;">nexen회사 2025 04 19에 제작됨</h3>
+      </div>
   </body>
 </html>
