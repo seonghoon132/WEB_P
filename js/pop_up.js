@@ -22,4 +22,10 @@ function pop_up() {
         }
         setTimeout(show_clock, 1000);  //1초마다갱신
        }
-       
+        
+    const over = (obj) => {
+        obj.src="image/png-transparent-maplestory-logo-anfall-skill-online-game-others.png";
+    };
+    const out = (obj) => {
+         obj.src="image/lnb_logo.png"; 
+    };
