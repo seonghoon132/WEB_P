@@ -34,6 +34,14 @@ function init(){ // 로그인 폼에 쿠키에서 가져온 아이디 입력
     }
     session_check(); // 세션 유무 검사
 }
+function init_logined(){
+    if(sessionStorage){
+        decrypt_text(); // 복호화 함수
+    }
+    else{
+        alert("세션 스토리지 지원 x");
+    }
+}
 
 // 로그인 횟수 증가 함수
 function login_count() {
@@ -71,6 +79,7 @@ function login_failed() {
     setCookie("login_fail", failCount, 1); // 1일간 저장
 
     const messageDiv = document.getElementById('login_fail_msg');
+    if (messageDiv) {
     if (failCount >= 3) {
         messageDiv.innerText = `로그인 실패 횟수: ${failCount}회. 로그인 제한 상태입니다. 잠시 후 다시 시도해주세요.`;
         // 로그인 제한 상태를 저장할 수도 있음
@@ -78,6 +87,12 @@ function login_failed() {
     } else {
         messageDiv.innerText = `로그인 실패 횟수: ${failCount}회. 3회 이상 실패 시 로그인 제한됩니다.`;
     }
+    }
+}
+
+function hasRepeatedDoubleDigits(input) {
+        const regex = /(\d{2,}).*\1/;
+        return regex.test(input);
 }
 
 function isLoginBlocked() {
@@ -91,12 +106,13 @@ const check_input = () => {
     const idsave_check = document.getElementById('idSaveCheck');
     const emailValue = emailInput.value.trim();
     const passwordValue = passwordInput.value.trim();
-    
+    const payload = {
+        id: emailValue,
+        exp: Math.floor(Date.now() / 1000) + 3600 // 1시간 (3600초)
+    };
+    const jwtToken = generateJWT(payload);
     //연속된 숫자 2개이상 반복 검사 함수
-    function hasRepeatedDoubleDigits(input) {
-        const regex = /(\d{2,}).*\1/;
-        return regex.test(input);
-    }
+   
 
     if (emailValue === '') {
         alert('이메일을 입력하세요.');
@@ -132,8 +148,10 @@ const check_input = () => {
         alert('패스워드는 특수문자를 1개 이상 포함해야 합니다.');
         return false;
     }
+    
     const hasUpperCase = passwordValue.match(/[A-Z]+/) !== null;
     const hasLowerCase = passwordValue.match(/[a-z]+/) !== null;
+    
     if (!hasUpperCase || !hasLowerCase) {
         alert('패스워드는 대소문자를 1개 이상 포함해야 합니다.');
         return false;
@@ -142,16 +160,7 @@ const check_input = () => {
         alert("3회 이상 로그인 실패로 인해 로그인이 제한되었습니다. 잠시 후 다시 시도해주세요.");
         return false;
     }
-    const loginSuccess = false; // TODO: 실제 로그인 성공 여부를 판별하는 로직 필요
-        if (!loginSuccess) {
-        login_failed(); // 실패 횟수 증가 및 메시지 출력
-        return false;  // 로그인 실패 처리
-    } else {
-        // 로그인 성공 시 실패 카운트 초기화
-        setCookie("login_fail", 0, 0);
-        setCookie("login_block", "", 0);
-        // 이후 로그인 성공 처리
-    }
+    
     const check_xss = (input) => {
         const DOMPurify = window.DOMPurify;
         const sanitizedInput = DOMPurify.sanitize(input);
@@ -177,18 +186,16 @@ const check_input = () => {
         setCookie("id", emailValue.value, 0); //날짜를 0 - 쿠키 삭제
     }
     
-
+    setCookie("login_fail", 0, 0);
+    setCookie("login_block", "", 0);
     login_count();
     session_set(); // 세션 생성
+    localStorage.setItem('jwt_token', jwtToken);
     loginForm.submit();
 };
 
 // 이벤트 리스너는 함수 밖에서 등록해야 함
 document.getElementById("login_btn").addEventListener('click', check_input);
-document.getElementById("logout_btn").addEventListener('click', () => {
-    logout_count();
-    // 로그아웃 처리 로직 추가
-});
 
 
 
