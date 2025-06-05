@@ -10,7 +10,7 @@ function encodeByAES256(key, data){ //
     return cipher.toString();
 }
 
-function decodeByAES256(key, data){
+export function decodeByAES256(key, data){
     const cipher = CryptoJS.AES.decrypt(data, CryptoJS.enc.Utf8.parse(key), {
         iv: CryptoJS.enc.Utf8.parse(""),
         padding: CryptoJS.pad.Pkcs7,
@@ -31,6 +31,6 @@ export function decrypt_text(){
     const k = "key"; // 서버의 키
     const rk = k.padEnd(32, " "); // AES256은 key 길이가 32
     const eb = session_get();
-    const b = this.decodeByAES256(rk, eb); // 실제 복호화
+    const b = decodeByAES256(rk, eb); // 실제 복호화
     console.log(b); 
 }

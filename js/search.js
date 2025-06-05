@@ -54,15 +54,20 @@
 //     return false;
 // }
 
+document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("search_button_msg").addEventListener('click', () => {
+        search_message();     // 먼저 메시지 출력
+        googleSearch();       // 그 다음 실제 검색
+    });
+});
 
-document.getElementById("search_button_msg").addEventListener('click', googleSearch);
 
 const search_message = () => {
     let mes = "검색을 수행합니다";
     alert(mes);
 };
 
-function googleSearch() {
+export function googleSearch() {
     const searchTerm = document.getElementById("search_input").value;
     const googleSearchUrl = `https://www.google.com/search?q=${encodeURIComponent(searchTerm)}`;
 

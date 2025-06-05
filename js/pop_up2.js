@@ -1,5 +1,4 @@
 import { generateJWT, checkAuth } from './jwt_token.js';
-import { googleSearch } from './search.js';
 
 export function pop_up() {
     var cookieCheck = getCookie("id");

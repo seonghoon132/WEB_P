@@ -47,12 +47,43 @@ function isAuthenticated() { // 사용자 인증 상태 확인
     return !!payload; // 페이로드 유무로 인증 상태 판단
 }
 
-export function checkAuth() { // 인증 검사 수행
-    const authenticated = isAuthenticated(); // 한 번만 검증 호출
+// export function checkAuth() { // 인증 검사 수행
+//     const authenticated = isAuthenticated(); // 한 번만 검증 호출
+//     if (authenticated) {
+//         alert('정상적으로 토큰이 검증되었습니다.');
+//     } else {
+//         alert('토큰 검증 에러!! 인증되지 않은 접근입니다.');
+//     window.location.href = '../login/login.html'; // 로그인 페이지 이동
+//     }
+// }
+
+// 페이지 접근 시 검증
+// export function checkAuth() {
+//   const authenticated = isAuthenticated();
+
+//   if (authenticated) {
+//     console.log('정상 인증');
+//   } else {
+//     console.warn('토큰 검증 실패 → 자동 로그아웃');
+//     localStorage.removeItem("jwt_token");
+//     sessionStorage.clear(); // 필요시
+//     alert('토큰이 유효하지 않습니다. 다시 로그인해주세요.');
+//     location.href = '../login/login.html';
+//   }
+// }
+
+export function checkAuth() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const isFromSignup = urlParams.get('from') === 'signup';
+
+    // 회원가입 후 로그인 진입이면 검사 생략
+    if (isFromSignup) return;
+
+    const authenticated = isAuthenticated();
     if (authenticated) {
         alert('정상적으로 토큰이 검증되었습니다.');
     } else {
         alert('토큰 검증 에러!! 인증되지 않은 접근입니다.');
-    window.location.href = '../login/login.html'; // 로그인 페이지 이동
+        window.location.href = '../login/login.html';
     }
 }

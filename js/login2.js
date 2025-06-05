@@ -1,6 +1,7 @@
 import { session_set, session_get, session_check } from './session.js';
-import { encrypt_text, decrypt_text } from './crypto.js';
+import { encrypt_text, decrypt_text, decodeByAES256 } from './crypto.js';
 import { generateJWT, checkAuth } from './jwt_token.js';
+import { googleSearch } from './search.js';
 
 
 function init(){ // 로그인 폼에 쿠키에서 가져온 아이디 입력
@@ -88,14 +89,8 @@ function isLoginBlocked() {
 }
 
 
-function checkAuth() {
-    console.log("checkAuth() 호출됨 (임시 정의)");
-    // 실제 인증 체크 로직이 있다면 여기에 작성
-}
 
-function decrypt_text() {
-    console.log("decrypt_text() 호출됨 - 구현 필요");
-}
+
 
 const check_input = () => {
     const loginForm = document.getElementById('login_form');

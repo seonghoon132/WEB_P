@@ -1,5 +1,5 @@
 // Crypto2.js
-function encryptData(keyStr, data) {
+export function encryptData(keyStr, data) {
     const enc = new TextEncoder();
     const keyMaterial = window.crypto.subtle.importKey(
         "raw",
@@ -26,7 +26,7 @@ function encryptData(keyStr, data) {
     return `${ivBase64}:${cipherBase64}`;
 }
 
-function decryptData(keyStr, encryptedText) {
+export function decryptData(keyStr, encryptedText) {
     const [ivBase64, cipherBase64] = encryptedText.split(":");
 
     const enc = new TextEncoder();

@@ -22,3 +22,46 @@ JWT 토큰(jwt_token)을 삭제하는 함수 구현, 기존에는로그아웃과
 로그인 이후 .removeItem 메소드를 활용하여 로컬스토리지의 토큰을삭제했다 로그아웃시 페이지 주소가 잘못 된 것도 고쳤다.
 
 12주차 pdf 진도를 끝냈다.
+
+9. 자바  index.html과 pop_up.html도 모듈화를 진행했다. popup.html은 onclick 속성을 제거했고 pop_upclos.js안에 pop_up.js를 넣어 모듈화 했는데 그 안에서 실행 되게 document.addEventListener("DOMContentLoaded", () => {
+    show_clock();
+
+    const checkbox = document.getElementById('check_popup');
+    checkbox?.addEventListener('click', () => {
+        closePopup();
+    });
+}); 이 함수를 추가해놨다. 
+
+index.html은 pop_up.js안에 './jwt_token.js만 모듈화해서 넣어놨다. onload pop_up을 지우고 document.addEventListener("DOMContentLoaded", () => {
+  if (document.body.id === "main-page") {
+    pop_up();
+  }
+}); 이렇게 직접 추가했다. search.js도 document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("search_button_msg").addEventListener('click', () => {
+        search_message();     // 먼저 메시지 출력
+        googleSearch();       // 그 다음 실제 검색
+    });
+}); 이런식으로 모듈구조로 바꿔줬다.
+
+
+logout.js를 따로 만들어서 로그아웃 페이지에다가 연결했다. 그동안 login페이지에 쓸데없이 로그아웃 카운트,세션 쿠키 등 없애주는 함수 등 들어가있어서 따로 분리해줬다. 그러고 로그아웃 페이지도 모듈화 했다.
+
+join도 모듈화를 완료했고 홈페이지 이동 후 로그인 페이지로 갔을때 이미 로컬 스토리지에 데이터가 남아있어서 이미 로그인 되었습니다와 토큰검증에러 두개가 충돌되는 현상이 발생해서 오류를 수정했다.
+
+
+기능 추가 완료: join.js 파일에 아래 기능을 추가함.
+
+회원가입 정보(이름, 이메일, 비밀번호)를 JSON으로 구성
+
+암호화 후 세션 스토리지에 저장 (SignUp_Session_Encrypted)
+
+로그인 페이지 등에서 이 세션이 있다면 복호화하여 콘솔에 출력
+
+세션이 없다면 복호화 생략
+
+응용문제
+프로필 들어가는 링크에다가 target _blank로 잡아놔서 세션이 NULL되니까 계속  로그인이 필요하다며 튕겨짐. 세션의 특성 창이 닫히면 정보가 사라진다라는걸 기억하자.
+
+완성을 위해 팝업창 10초 끄는걸로 다시 복구함
+
+마지막 13주차 응용문제 전까지 지도를 구현했다.
