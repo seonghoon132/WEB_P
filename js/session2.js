@@ -1,6 +1,6 @@
 import { encrypt_text, decrypt_text } from './crypto.js';
 
-export function session_set() { //세션 저장
+export function session_set2() { //세션 저장
     let id = document.querySelector("#typeEmailX");
     let password = document.querySelector("#typePasswordX");
     let random = new Date(); // 랜덤 타임스탬프

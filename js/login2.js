@@ -1,7 +1,6 @@
 import { session_set, session_get, session_check } from './session.js';
 import { encrypt_text, decrypt_text } from './crypto.js';
 import { generateJWT, checkAuth } from './jwt_token.js';
-import { getCookie, setCookie} from './pop_up.js'
 
 
 function init(){ // 로그인 폼에 쿠키에서 가져온 아이디 입력
@@ -89,6 +88,14 @@ function isLoginBlocked() {
 }
 
 
+function checkAuth() {
+    console.log("checkAuth() 호출됨 (임시 정의)");
+    // 실제 인증 체크 로직이 있다면 여기에 작성
+}
+
+function decrypt_text() {
+    console.log("decrypt_text() 호출됨 - 구현 필요");
+}
 
 const check_input = () => {
     const loginForm = document.getElementById('login_form');
@@ -186,10 +193,9 @@ const check_input = () => {
 };
 
 // 이벤트 리스너는 함수 밖에서 등록해야 함
+
 document.addEventListener('DOMContentLoaded', () => {
-    const loginBtn = document.getElementById('login_btn');
-    if (loginBtn) {
-        loginBtn.addEventListener("click", check_input); // check_input 함수 호출
-    }
-    init(); // 쿠키에서 ID 불러오기 등
-});
+    checkAuth();
+    init_logined();
+ });
+ 
